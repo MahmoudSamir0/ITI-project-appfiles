@@ -106,9 +106,9 @@ curl -fsSL "https://github.com/GoogleCloudPlatform/docker-credential-gcr/release
  **copy this command**
 
   ```shell script
-
 gcloud auth configure-docker
 ```
+
  **copy this command**
 
 ```shell script
@@ -161,12 +161,13 @@ kubectl apply -f service.yaml
 
 1.
 
-``shell script
+```shell script
 cd ../my-agent
 ```
-now your now in your agent file
 
+now your now in your agent file
 2. run your agent deployment
+
 
 ```shell script
 kubectl apply -f agent.yaml
@@ -200,7 +201,7 @@ passwd jenkins
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 ```
 
-``shell script
+```shell script
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 ```
 
