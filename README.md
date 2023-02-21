@@ -249,8 +249,6 @@ kubectl get service -n devops-tools
 take it and open it in your browser
 
 
- kubectl get po -n devops-tools
-
 ```shell script
  kubectl get po -n devops-tools
 ```
