@@ -237,6 +237,9 @@ verify by running
 ```shell script
 kubectl get node
 ```
+
+now exit from egent
+
 ## get external ip of service of your jenkins 
 
 ```shell script
@@ -275,9 +278,69 @@ complete the information of
 ## configer your agent to be ready
 
 
+1. open Manage Jenkins 
+2. Manage nodes and clouds
+3. new node
+4. enter any name 
+5. enter name
+6. Remote root directory  copy this (/var/jenkins_home)
+7. **important** Labels copy this (jenkins-agent)
+8.  Launch method-----------> via ssh
+9.  hosts ----------------------> service name  you can find it py  run kubectl get service -n devops-tools
+10.  Credentials
+    1. choose add 
+    2. entar user name jenkins
+    3. password enter the password of your agent you create it 
+    4. enter any id 
+    5. choose seve 
+ 11. from Credentials choose the Credentials you create 
+ 12. Host Key Verification Strategy --------------> no virify
+ 13. save 
+## your agent is ready
 
 
+back to your Dashboard
 
+to create pipeline 
+
+1. new item
+2. Multibranch Pipeline
+prepare information of pipe line 
+
+clone this repo  and change some of  information
+
+in jenkinsfile 
+
+```shell script
+pipeline {
+    agent { label 'jenkins-agent' }
+    stages {
+        stage('build') {
+            steps {
+                script {
+                    sh   """
+                        docker build -t gcr.io/<project-id>/project-iti .
+                        docker push gcr.io/<project-id>/project-iti
+                    """
+                }
+            }
+        }
+        stage('deploy') {
+            steps {
+                script {
+                    sh    """
+                        kubectl apply -f yaml-files
+                    """
+                }
+            }
+        }
+    }
+}
+
+```
+
+
+## push it in your repo and complete your pipeline
 
 
 
