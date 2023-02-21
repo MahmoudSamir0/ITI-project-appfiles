@@ -57,16 +57,19 @@ clone this repo
 git clone https://github.com/MahmoudSamir0/ITI-project-appfiles.git
 ```
 
-go to rpo dir
+go to repo dir
 
 ```shell script
 cd ITI-project-appfiles
-```
+``` 
+
 you can see files
+
 
 ```shell script
 ls 
 ```
+
 
 
 ## Configure Docker & gcloud to work with GCR of your project
@@ -126,9 +129,11 @@ cd jenkins
  **copy this command**
 
 1.create namespace
+
 ```shell script
 kubectl create namespace devops-tools
 ```
+
 2.create service account 
 
 ```shell script
@@ -172,6 +177,7 @@ kubectl apply -f agent.yaml
 ```shell script
 kubectl apply -f agent_svc.yaml
 ```
+
 ## now your agent is ready
 
 now open your agent
@@ -183,6 +189,7 @@ kubectl exec -it -n <name of agent> -- /bin/bash
 ```shell script
 service ssh start
 ```
+
 change password for jenkins user
 
 ```shell script
